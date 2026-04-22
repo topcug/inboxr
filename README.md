@@ -1,6 +1,12 @@
 # Inboxr
 
-![Inboxr dashboard](assets/dashboard.png)
+[![CI](https://github.com/topcug/inboxr/actions/workflows/ci.yml/badge.svg)](https://github.com/topcug/inboxr/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/downloads/)
+[![Code style: ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
+[![Status: alpha](https://img.shields.io/badge/status-alpha-orange.svg)](#status)
+
+![Inboxr pipeline](assets/inboxr_pipeline_overview.svg)
 
 **Synthetic workspace generator for training and evaluating AI agents.**
 
@@ -394,6 +400,10 @@ The second layer builds a cross-system reference graph over personas, projects, 
 The result is that a fresh workspace passes `inboxr check` with zero errors, and any scenario you feed through `--repair` comes out grounded end-to-end.
 
 ## Agent toolset
+
+Under the hood, `inboxr eval` runs a tight observation → act → apply loop until the agent hits a terminal answer or `max_steps` — then the rubric scores the full trajectory.
+
+![Inboxr eval loop](assets/inboxr_eval_loop_detail.svg)
 
 The evaluation harness exposes a tool suite agents can call against the generated workspace. It covers three categories:
 
